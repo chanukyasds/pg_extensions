@@ -2,7 +2,7 @@
 
 This repo contains multiple extensions releated to PostgreSQL.
 
-All written in C language with the help of Postgres Header files, Macros and data types.
+All written in C language with the help of PostgreSQL Header files, Macros and data types.
 
 # Aggregates
 
