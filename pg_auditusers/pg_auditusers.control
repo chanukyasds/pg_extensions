@@ -1,3 +1,0 @@
-comment = 'Used to audit user activities on postgresql cluster'
-default_version = '1.0'
-relocatable = true

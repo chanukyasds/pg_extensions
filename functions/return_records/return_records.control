@@ -1,0 +1,4 @@
+comment = 'return_records'
+default_version = '1.0'
+module_pathname = '$libdir/return_records'
+relocatable = true

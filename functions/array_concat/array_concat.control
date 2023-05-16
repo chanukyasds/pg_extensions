@@ -1,0 +1,4 @@
+comment = 'array_concat'
+default_version = '1.0'
+module_pathname = '$libdir/array_concat'
+relocatable = true

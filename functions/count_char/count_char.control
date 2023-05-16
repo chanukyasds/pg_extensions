@@ -1,0 +1,4 @@
+comment = 'count_char'
+default_version = '1.0'
+module_pathname = '$libdir/count_char'
+relocatable = true

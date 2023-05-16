@@ -1,0 +1,4 @@
+comment = 'rotate_array'
+default_version = '1.0'
+module_pathname = '$libdir/rotate_array'
+relocatable = true

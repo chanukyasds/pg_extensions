@@ -1,0 +1,4 @@
+comment = 'insert_array'
+default_version = '1.0'
+module_pathname = '$libdir/insert_array'
+relocatable = true

@@ -1,0 +1,4 @@
+comment = 'split_composite'
+default_version = '1.0'
+module_pathname = '$libdir/split_composite'
+relocatable = true

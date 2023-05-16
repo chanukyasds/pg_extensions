@@ -1,0 +1,4 @@
+comment = 'composite'
+default_version = '1.0'
+module_pathname = '$libdir/composite'
+relocatable = true
