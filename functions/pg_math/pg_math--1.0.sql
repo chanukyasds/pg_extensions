@@ -1,9 +1,6 @@
-
-DROP SCHEMA IF EXISTS "math";
-
-CREATE SCHEMA "math";
-
-SET search_path = 'math';
+/* 
+ * Working SQL Functions for pg_math definitions 
+ */
 
 /* F Distribution Functions */ 
 
@@ -215,7 +212,7 @@ RETURNS float8
 AS '/extensions/pg_math/pg_math','cdf_laplace_qinv'
 LANGUAGE C STRICT;
 
-/* Exponential Power Distribution Function Prototypes */
+/* Exponential Power Distribution Functions */
 
 DROP FUNCTION IF EXISTS rdf_exppow(float8,float8,float8);
 

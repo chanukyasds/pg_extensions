@@ -1,10 +1,10 @@
 /*
-    Primary source file statistical distribustion functuions
+    * pg_math.c:
 
-    Functions with prefix "cdf" is for cumulative distribution calculations
-    Functions with prefix "rdf" is for random distribution calculations
+    * Functions with prefix "cdf" is for cumulative distribution calculation
+    * Functions with prefix "rdf" is for random distribution calculation
 
-    Available Distributions:
+    * Available Distributions:
 
         1. F-Distribution
         2. Gaussian Distribution
@@ -15,28 +15,30 @@
         7. Laplace Distribution
         8. Exponential Power Distribution
         9. Cauchy Distribution
-       10. Rayleigh Distribution
-       11. Rayleigh Tail Distribution
-       12. Landau Distribution
-       13. Gamma Distribution
-       14. Flat (Uniform) Distribution
-       15. Lognormal Distribution
-       16. Chi-squared Distribution
-       17. T-Distribution
-       18. Beta Distribution
-       19. Logistic Distribution
-       20. Pareto Distribution
-       21. Weibull Distribution
-       22. Type-1 Gumbel Distribution
-       23. Type-2 Gumbel Distribution
-       24. Poisson Distribution
-       25. Bernoulli Distribution
-       26. Binomial Distribution
-       27. Negative Binomial Distribution
-       28. Pascal Distribution
-       29. Geometric Distribution
-       30. Hypergeometric Distribution
-       31. Logarithmic Distribution
+        10. Rayleigh Distribution
+        11. Rayleigh Tail Distribution
+        12. Landau Distribution
+        13. Gamma Distribution
+        14. Flat (Uniform) Distribution
+        15. Lognormal Distribution
+        16. Chi-squared Distribution
+        17. T-Distribution
+        18. Beta Distribution
+        19. Logistic Distribution
+        20. Pareto Distribution
+        21. Weibull Distribution
+        22. Type-1 Gumbel Distribution
+        23. Type-2 Gumbel Distribution
+        24. Poisson Distribution
+        25. Bernoulli Distribution
+        26. Binomial Distribution
+        27. Negative Binomial Distribution
+        28. Pascal Distribution
+        29. Geometric Distribution
+        30. Hypergeometric Distribution
+        31. Logarithmic Distribution
+
+    * Dependency modules/packages : libgsl (GSL - GNU Scientific Library)
 
 */
 
@@ -230,7 +232,6 @@ Datum cdf_hypergeometric_q(PG_FUNCTION_ARGS);
 /* Logarithmic Distribution Function Prototypes */
 Datum rdf_logarithmic(PG_FUNCTION_ARGS);
 
-
 /* Version 1 Calling */
 
 PG_FUNCTION_INFO_V1(rdf_fdist);
@@ -351,7 +352,6 @@ PG_FUNCTION_INFO_V1(rdf_hypergeometric);
 PG_FUNCTION_INFO_V1(cdf_hypergeometric_p);
 PG_FUNCTION_INFO_V1(cdf_hypergeometric_q);
 PG_FUNCTION_INFO_V1(rdf_logarithmic);
-
 
 /* F Distribution Function Definitions */
 
@@ -876,7 +876,7 @@ Datum cdf_laplace_qinv(PG_FUNCTION_ARGS)
                            errhint("The cdf_laplace_qinv function computes inverse of cumulative distribution Q(x) for the Laplace distribution with width a.")));
 }
 
-/* Exponential Power Distribution Function Prototypes */
+/* Exponential Power Distribution Function Definitions */
 
 Datum rdf_exppow(PG_FUNCTION_ARGS)
 {
@@ -1551,6 +1551,7 @@ Datum rdf_tdist(PG_FUNCTION_ARGS)
                            errmsg("Unable to calculate rdf_tdist(x,nu)."),
                            errhint("The rdf_tdist function computes probability density p(x) at x for a t-distribution with nu degrees of freedom.")));
 }
+
 Datum cdf_tdist_p(PG_FUNCTION_ARGS)
 {
     const double x = PG_GETARG_FLOAT8(0);
@@ -1851,6 +1852,7 @@ Datum cdf_pareto_p(PG_FUNCTION_ARGS)
                            errmsg("Unable to calculate cdf_pareto_p(x,a,b)."),
                            errhint("The cdf_pareto_p function computes cumulative distribution P(x) for the Pareto distribution with exponent a and scale b.")));
 }
+
 Datum cdf_pareto_q(PG_FUNCTION_ARGS)
 {
     const double x = PG_GETARG_FLOAT8(0);
@@ -1947,6 +1949,7 @@ Datum cdf_weibull_p(PG_FUNCTION_ARGS)
                            errmsg("Unable to calculate cdf_weibull_p(x,a,b)."),
                            errhint("The cdf_weibull_p function computes cumulative distribution P(x) for the Weibull distribution with scale a and exponent b.")));
 }
+
 Datum cdf_weibull_q(PG_FUNCTION_ARGS)
 {
     const double x = PG_GETARG_FLOAT8(0);
@@ -1965,6 +1968,7 @@ Datum cdf_weibull_q(PG_FUNCTION_ARGS)
                            errmsg("Unable to calculate cdf_weibull_q(x,a,b)."),
                            errhint("The cdf_weibull_q function computes cumulative distribution Q(x) for the Weibull distribution with scale a and exponent b.")));
 }
+
 Datum cdf_weibull_pinv(PG_FUNCTION_ARGS)
 {
     const double P = PG_GETARG_FLOAT8(0);
@@ -1983,6 +1987,7 @@ Datum cdf_weibull_pinv(PG_FUNCTION_ARGS)
                            errmsg("Unable to calculate cdf_weibull_pinv(P,a,b)."),
                            errhint("The cdf_weibull_pinv function computes inverse of cumulative distribution P(x) for the Weibull distribution with scale a and exponent b.")));
 }
+
 Datum cdf_weibull_qinv(PG_FUNCTION_ARGS)
 {
     const double Q = PG_GETARG_FLOAT8(0);
@@ -2022,6 +2027,7 @@ Datum rdf_gumbel1(PG_FUNCTION_ARGS)
                            errmsg("Unable to calculate rdf_gumbel1(x,a,b)."),
                            errhint("The rdf_gumbel1 function computes probability density p(x) at x for a Type-1 Gumbel distribution with parameters a and b.")));
 }
+
 Datum cdf_gumbel1_p(PG_FUNCTION_ARGS)
 {
     const double x = PG_GETARG_FLOAT8(0);
@@ -2118,6 +2124,7 @@ Datum rdf_gumbel2(PG_FUNCTION_ARGS)
                            errmsg("Unable to calculate rdf_gumbel2(x,a,b)."),
                            errhint("The rdf_gumbel2 function computes probability density p(x) at x for a Type-2 Gumbel distribution with parameters a and b..")));
 }
+
 Datum cdf_gumbel2_p(PG_FUNCTION_ARGS)
 {
     const double x = PG_GETARG_FLOAT8(0);
@@ -2207,10 +2214,9 @@ Datum rdf_poisson(PG_FUNCTION_ARGS)
                            errmsg("Unable to calculate rdf_poisson(k,mu)."),
                            errhint("k should be non negative value (k>=0).")));
 
-
     gsl_set_error_handler_off();
 
-    res = gsl_ran_poisson_pdf(k,mu);
+    res = gsl_ran_poisson_pdf(k, mu);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2233,7 +2239,7 @@ Datum cdf_poisson_p(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_cdf_poisson_P(k,mu);
+    res = gsl_cdf_poisson_P(k, mu);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2256,7 +2262,7 @@ Datum cdf_poisson_q(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_cdf_poisson_Q(k,mu);
+    res = gsl_cdf_poisson_Q(k, mu);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2279,10 +2285,9 @@ Datum rdf_bernoulli(PG_FUNCTION_ARGS)
                            errmsg("Unable to calculate rdf_bernoulli(k,p)."),
                            errhint("k should be non negative value (k>=0).")));
 
-
     gsl_set_error_handler_off();
 
-    res = gsl_ran_bernoulli_pdf(k,p);
+    res = gsl_ran_bernoulli_pdf(k, p);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2308,7 +2313,7 @@ Datum rdf_binomial(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_ran_binomial_pdf(k,p,n);
+    res = gsl_ran_binomial_pdf(k, p, n);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2332,7 +2337,7 @@ Datum cdf_binomial_p(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_cdf_binomial_P(k,p,n);
+    res = gsl_cdf_binomial_P(k, p, n);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2356,7 +2361,7 @@ Datum cdf_binomial_q(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_cdf_binomial_Q(k,p,n);
+    res = gsl_cdf_binomial_Q(k, p, n);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2382,7 +2387,7 @@ Datum rdf_negative_binomial(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_ran_negative_binomial_pdf(k,p,n);
+    res = gsl_ran_negative_binomial_pdf(k, p, n);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2406,7 +2411,7 @@ Datum cdf_negative_binomial_p(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_cdf_negative_binomial_P(k,p,n);
+    res = gsl_cdf_negative_binomial_P(k, p, n);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2430,7 +2435,7 @@ Datum cdf_negative_binomial_q(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_cdf_negative_binomial_Q(k,p,n);
+    res = gsl_cdf_negative_binomial_Q(k, p, n);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2456,7 +2461,7 @@ Datum rdf_pascal(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_ran_pascal_pdf(k,p,n);
+    res = gsl_ran_pascal_pdf(k, p, n);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2480,7 +2485,7 @@ Datum cdf_pascal_p(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_cdf_pascal_P(k,p,n);
+    res = gsl_cdf_pascal_P(k, p, n);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2504,7 +2509,7 @@ Datum cdf_pascal_q(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_cdf_pascal_Q(k,p,n);
+    res = gsl_cdf_pascal_Q(k, p, n);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2529,7 +2534,7 @@ Datum rdf_geometric(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_ran_geometric_pdf(k,p);
+    res = gsl_ran_geometric_pdf(k, p);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2552,7 +2557,7 @@ Datum cdf_geometric_p(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_cdf_geometric_P(k,p);
+    res = gsl_cdf_geometric_P(k, p);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2575,7 +2580,7 @@ Datum cdf_geometric_q(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_cdf_geometric_Q(k,p);
+    res = gsl_cdf_geometric_Q(k, p);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2600,10 +2605,9 @@ Datum rdf_hypergeometric(PG_FUNCTION_ARGS)
                            errmsg("Unable to calculate rdf_hypergeometric(k,n1,n2,t)."),
                            errhint("k,n1,n2 and t all should be non negative values (k>=0), (n1>=0), (n2>=0) & (t>=0) .")));
 
-
     gsl_set_error_handler_off();
 
-    res = gsl_ran_hypergeometric_pdf(k,n1,n2,t);
+    res = gsl_ran_hypergeometric_pdf(k, n1, n2, t);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2628,7 +2632,7 @@ Datum cdf_hypergeometric_p(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_cdf_hypergeometric_P(k,n1,n2,t);
+    res = gsl_cdf_hypergeometric_P(k, n1, n2, t);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2637,6 +2641,7 @@ Datum cdf_hypergeometric_p(PG_FUNCTION_ARGS)
                            errmsg("Unable to calculate cdf_hypergeometric_p(k,n1,n2,t)."),
                            errhint("The cdf_hypergeometric_p function computes cumulative distribution P(k) for the hypergeometric distribution with parameters n1, n2 and t.")));
 }
+
 Datum cdf_hypergeometric_q(PG_FUNCTION_ARGS)
 {
     const int k = PG_GETARG_INT64(0);
@@ -2652,7 +2657,7 @@ Datum cdf_hypergeometric_q(PG_FUNCTION_ARGS)
 
     gsl_set_error_handler_off();
 
-    res = gsl_cdf_hypergeometric_Q(k,n1,n2,t);
+    res = gsl_cdf_hypergeometric_Q(k, n1, n2, t);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
@@ -2670,14 +2675,14 @@ Datum rdf_logarithmic(PG_FUNCTION_ARGS)
     const double p = PG_GETARG_FLOAT8(1);
     float res;
 
-    if (k < 0 )
+    if (k < 0)
         ereport(ERROR, (
                            errmsg("Unable to calculate rdf_logarithmic(k,p)."),
                            errhint("k should be non negative value (k>=0) .")));
 
     gsl_set_error_handler_off();
 
-    res = gsl_ran_logarithmic_pdf(k,p);
+    res = gsl_ran_logarithmic_pdf(k, p);
 
     if (gsl_finite(res))
         PG_RETURN_FLOAT8(res);
